@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GENZAI Coder | AI Student OS & Career Companion</title>
+  <meta name="description" content="Your AI-powered path from student to job-ready engineer. Learn, practice, build, and get hired.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app" class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-logo">
+          <span class="brand-code-symbol">&lt;/&gt;</span>
+        </div>
+        <div class="brand-text">
+          <div class="brand-title"><strong class="brand-genzai">GENZAI</strong> <span class="brand-coder">CODER</span></div>
+          <div class="brand-subtag">AI STUDENT OS</div>
+        </div>
+      </div>
+
+      <!-- Quick Profile Card -->
+      <div class="sidebar-user" id="sidebar-user-card">
+        <div class="user-avatar" id="user-avatar">AD</div>
+        <div class="user-info">
+          <h4 id="sidebar-user-name">Alex Dev</h4>
+          <span class="user-role-badge" id="sidebar-target-role">AI/ML Engineer</span>
+        </div>
+        <button class="user-edit-icon" id="sidebar-edit-profile-btn" title="Onboarding Setup">⚙️</button>
+      </div>
+
+      <!-- Navigation Menu -->
+      <nav class="nav-menu">
+        <div class="nav-section-title">YOUR OS</div>
+        <button class="nav-btn active" data-tab="dashboard">
+          <span class="nav-icon">📊</span>
+          <span class="nav-label">Dashboard</span>
+        </button>
+        <button class="nav-btn" data-tab="skill-graph">
+          <span class="nav-icon">🌳</span>
+          <span class="nav-label">Skill Tree</span>
+          <span class="badge-pulse">Interactive</span>
+        </button>
+        <button class="nav-btn" data-tab="study-planner">
+          <span class="nav-icon">📅</span>
+          <span class="nav-label">AI Study Planner</span>
+        </button>
+        <button class="nav-btn" data-tab="notes">
+          <span class="nav-icon">📝</span>
+          <span class="nav-label">Smart Notes</span>
+        </button>
+
+        <div class="nav-section-title">LEARN</div>
+        <button class="nav-btn" data-tab="dsa-hub">
+          <span class="nav-icon">🧩</span>
+          <span class="nav-label">DSA Preparation</span>
+        </button>
+        <button class="nav-btn" data-tab="aiml-roadmap">
+          <span class="nav-icon">🤖</span>
+          <span class="nav-label">AI/ML Track</span>
+        </button>
+        <button class="nav-btn" data-tab="coding-practice">
+          <span class="nav-icon">💻</span>
+          <span class="nav-label">Code Sandbox</span>
+        </button>
+        <button class="nav-btn" data-tab="ai-tutor">
+          <span class="nav-icon">💡</span>
+          <span class="nav-label">AI Study Tutor</span>
+        </button>
+
+        <div class="nav-section-title">CAREER</div>
+        <button class="nav-btn" data-tab="job-prep">
+          <span class="nav-icon">💼</span>
+          <span class="nav-label">Job Preparation</span>
+        </button>
+        <button class="nav-btn" data-tab="career-roadmaps">
+          <span class="nav-icon">🚀</span>
+          <span class="nav-label">Career Roadmaps</span>
+        </button>
+        <button class="nav-btn" data-tab="project-generator">
+          <span class="nav-icon">✨</span>
+          <span class="nav-label">Project Generator</span>
+        </button>
+        <button class="nav-btn" data-tab="knowledge-hub">
+          <span class="nav-icon">📚</span>
+          <span class="nav-label">Knowledge Hub</span>
+        </button>
+
+        <div class="nav-section-title">GROW</div>
+        <button class="nav-btn" data-tab="ai-mentor">
+          <span class="nav-icon">🧙‍♂️</span>
+          <span class="nav-label">AI Career Mentor</span>
+        </button>
+        <button class="nav-btn" data-tab="gamification">
+          <span class="nav-icon">🏆</span>
+          <span class="nav-label">Streaks & Rewards</span>
+        </button>
+      </nav>
+
+      <!-- Sidebar Footer -->
+      <div class="sidebar-footer">
+        <div class="streak-mini">
+          <span class="flame-icon">🔥</span>
+          <div>
+            <div class="streak-num" id="sidebar-streak">14 Days</div>
+            <div class="streak-sub">Coding Streak</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Layout -->
+    <div class="main-wrapper">
+      <!-- Top Navbar Header -->
+      <header class="top-header">
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+
+        <div class="header-search">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="global-search" placeholder="Search skills, DSA topics, projects, career roadmaps..." />
+          <kbd class="shortcut-key">Ctrl + K</kbd>
+        </div>
+
+        <div class="header-actions">
+          <span class="demo-mode-badge">⚡ DEMO MODE</span>
+
+          <div class="xp-pill">
+            <span class="xp-star">⭐</span>
+            <span id="header-xp-val">3,450 XP</span>
+            <span class="level-badge" id="header-level-val">Lvl 6</span>
+          </div>
+
+          <button class="icon-btn" id="edit-profile-btn" title="Personalized Onboarding Setup">
+            <span>⚙️</span>
+          </button>
+
+          <button class="theme-toggle-pill" id="theme-toggle-btn" title="Toggle Light/Dark Theme">
+            <span class="theme-icon">🌙</span>
+            <span class="theme-label" id="theme-toggle-label">Dark Mode</span>
+          </button>
+        </div>
+      </header>
+<!-- INTERACTIVE DASHBOARD START -->
+<section class="dashboard-grid">
+  <div class="stat-card">
+    <h3>Total XP</h3>
+    <p class="stat-number">4,280</p>
+    <span>Level 12</span>
+  </div>
+  <div class="stat-card">
+    <h3>Projects</h3>
+    <p class="stat-number">12/20</p>
+    <span>60% Complete</span>
+  </div>
+  <div class="stat-card">
+    <h3>Learning Streak</h3>
+    <p class="stat-number">7 Days</p>
+    <span>Keep it up!</span>
+  </div>
+  <div class="stat-card">
+    <h3>Study Hours</h3>
+    <p class="stat-number">14h</p>
+    <span>This Week</span>
+  </div>
+</section>
+<!-- INTERACTIVE DASHBOARD END -->
+      <!-- Main Content Views Container -->
+      <main class="content-area" id="content-area">
+
+        <!-- VIEW 1: SMART DASHBOARD HERO EXPERIENCE -->
+        <section class="view-panel active" id="view-dashboard">
+          <!-- Hero Banner -->
+          <div class="dashboard-banner">
+            <div class="banner-text">
+              <div class="banner-badge-row">
+                <span class="greeting-tag">GENZAI CODER • AI STUDENT OS</span>
+                <span class="demo-profile-pill">DEMO PROFILE</span>
+              </div>
+              <h1 class="hero-headline">Your AI-powered path from student to job-ready engineer.</h1>
+              <p class="hero-subtext">GENZAI analyzes your skills, builds your learning plan, helps you practice, and guides you toward your target career.</p>
+              <div class="target-role-pill-bar">
+                <span>Targeting → <strong id="dash-target-role-text">AI/ML Engineer</strong></span>
+                <span class="dot-separator">•</span>
+                <span>3rd Year B.Tech</span>
+                <span class="dot-separator">•</span>
+                <span>4 Hours/day Goal</span>
+              </div>
+            </div>
+            <div class="banner-actions">
+              <button class="btn btn-primary" id="dash-continue-btn">🚀 Continue My Journey</button>
+              <button class="btn btn-secondary" id="dash-ask-mentor-btn">🤖 Ask GENZAI</button>
+              <button class="btn btn-demo-highlight" id="dash-run-demo-btn">🎬 Run 60-sec Demo</button>
+            </div>
+          </div>
+
+          <!-- Career Journey Visual Sequence -->
+          <div class="content-card journey-card">
+            <div class="card-header">
+              <div>
+                <h3>🗺️ YOUR CAREER JOURNEY</h3>
+                <p class="subtitle">One clear path to bridge college learning with tech industry hiring</p>
+              </div>
+              <span class="journey-status-badge">Step 3 of 6 Active</span>
+            </div>
+            <div class="journey-flow-bar">
+              <div class="journey-step completed">
+                <div class="js-icon">📋</div>
+                <div class="js-name">ASSESS</div>
+                <div class="js-status">Completed</div>
+              </div>
+              <div class="journey-arrow">→</div>
+              <div class="journey-step active">
+                <div class="js-icon">📚</div>
+                <div class="js-name">LEARN</div>
+                <div class="js-status">65% Progress</div>
+              </div>
+              <div class="journey-arrow">→</div>
+              <div class="journey-step active">
+                <div class="js-icon">🧩</div>
+                <div class="js-name">PRACTICE</div>
+                <div class="js-status">48% Solved</div>
+              </div>
+              <div class="journey-arrow">→</div>
+              <div class="journey-step next">
+                <div class="js-icon">✨</div>
+                <div class="js-name">BUILD</div>
+                <div class="js-status">30% Complete</div>
+              </div>
+              <div class="journey-arrow">→</div>
+              <div class="journey-step locked">
+                <div class="js-icon">💼</div>
+                <div class="js-name">PREPARE</div>
+                <div class="js-status">20% Ready</div>
+              </div>
+              <div class="journey-arrow">→</div>
+              <div class="journey-step locked">
+                <div class="js-icon">🎯</div>
+                <div class="js-name">GET HIRED</div>
+                <div class="js-status">Target Goal</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Metrics Bar -->
+          <div class="metrics-grid">
+            <div class="metric-card cyan">
+              <div class="card-icon">🔥</div>
+              <div class="card-data">
+                <span class="card-val" id="dash-metric-streak">14 Days</span>
+                <span class="card-lbl">Coding Streak</span>
+              </div>
+              <div class="card-sparkle">Personal Best!</div>
+            </div>
+
+            <div class="metric-card violet">
+              <div class="card-icon">🧩</div>
+              <div class="card-data">
+                <span class="card-val" id="dash-metric-dsa">48 / 150</span>
+                <span class="card-lbl">DSA Solved</span>
+              </div>
+              <div class="progress-mini"><div class="bar" style="width: 32%;"></div></div>
+            </div>
+
+            <div class="metric-card emerald">
+              <div class="card-icon">🤖</div>
+              <div class="card-data">
+                <span class="card-val" id="dash-metric-aiml">Level 4</span>
+                <span class="card-lbl">AI/ML Track</span>
+              </div>
+              <div class="progress-mini"><div class="bar" style="width: 65%;"></div></div>
+            </div>
+
+            <div class="metric-card amber">
+              <div class="card-icon">🎯</div>
+              <div class="card-data">
+                <span class="card-val" id="dash-metric-readiness">74%</span>
+                <span class="card-lbl">Job Readiness Score</span>
+              </div>
+              <div class="progress-mini"><div class="bar" style="width: 74%;"></div></div>
+            </div>
+          </div>
+
+          <!-- 2-Column Main Dashboard Content -->
+          <div class="dashboard-columns">
+            <!-- Left Column: Career Audit & Action Plan -->
+            <div class="col-main">
+
+              <!-- HERO FEATURE: GENZAI CAREER AUDIT CARD -->
+              <div class="content-card audit-hero-card" id="dash-career-audit-card">
+                <div class="card-header">
+                  <div class="audit-title-box">
+                    <span class="audit-robot-avatar">🤖</span>
+                    <div>
+                      <h3>GENZAI CAREER AUDIT</h3>
+                      <p class="subtitle">AI-powered analysis of your current skills and career readiness</p>
+                    </div>
+                  </div>
+                  <div class="audit-readiness-circle">
+                    <span class="arc-num" id="audit-readiness-val">74%</span>
+                    <span class="arc-lbl">Job Readiness</span>
+                  </div>
+                </div>
+
+                <div class="audit-meta-row">
+                  <span>Target Role: <strong id="audit-target-role">AI/ML Engineer</strong></span>
+                  <span class="badge-tag">Evaluated from demo profile</span>
+                </div>
+
+                <div class="audit-split-grid">
+                  <div class="audit-col strengths">
+                    <h4>✅ Mastered Strengths</h4>
+                    <ul class="audit-list">
+                      <li>✓ Python Programming (Advanced)</li>
+                      <li>✓ SQL & Database Fundamentals</li>
+                      <li>✓ Machine Learning Algorithms (Scikit-Learn)</li>
+                      <li>✓ Git & GitHub Portfolio Workflow</li>
+                    </ul>
+                  </div>
+
+                  <div class="audit-col gaps">
+                    <h4>⚠️ Critical Skill Gaps</h4>
+                    <ul class="audit-list">
+                      <li>⚠️ Advanced DSA (Binary Trees & DP)</li>
+                      <li>⚠️ System Design & Model API Deployment</li>
+                      <li>⚠️ Generative AI & Vector Search (RAG)</li>
+                      <li>⚠️ Technical Interview Practice</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="audit-next-action-box">
+                  <div class="ana-header">GENZAI'S NEXT BEST ACTION</div>
+                  <p id="audit-next-action-text">"Complete 3 Binary Search Tree problems and build one RAG-based Generative AI project this week."</p>
+                </div>
+
+                <div class="audit-card-footer">
+                  <button class="btn btn-primary" id="run-full-audit-btn">⚡ Run Full Career Audit</button>
+                  <span class="audit-update-time" id="audit-last-time">Last updated: Today</span>
+                </div>
+              </div>
+
+              <!-- Today's AI Action Plan -->
+              <div class="content-card">
+                <div class="card-header">
+                  <div>
+                    <h3>🎯 Today's AI Action Plan</h3>
+                    <p class="subtitle">Personalized schedule generated based on exam dates & target role</p>
+                  </div>
+                  <button class="btn btn-sm btn-outline" id="reschedule-tasks-btn">🤖 Optimize My Day</button>
+                </div>
+                <div class="tasks-list" id="today-tasks-container">
+                  <!-- Task Items populated dynamically -->
+                </div>
+              </div>
+
+              <!-- Active Tracks Split -->
+              <div class="content-card">
+                <div class="card-header">
+                  <h3>⚡ Active Track Progress</h3>
+                </div>
+                <div class="tracks-split">
+                  <div class="track-box">
+                    <div class="track-head">
+                      <span class="track-title">🧩 DSA Prep Status</span>
+                      <span class="track-percent">32%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 32%;"></div></div>
+                    <p class="track-next">Next: <strong>Binary Search Trees</strong></p>
+                    <button class="btn btn-sm btn-secondary nav-trigger" data-tab="dsa-hub">Continue DSA →</button>
+                  </div>
+
+                  <div class="track-box">
+                    <div class="track-head">
+                      <span class="track-title">🤖 AI/ML Track</span>
+                      <span class="track-percent">65%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 65%;"></div></div>
+                    <p class="track-next">Next: <strong>Neural Networks & PyTorch</strong></p>
+                    <button class="btn btn-sm btn-secondary nav-trigger" data-tab="aiml-roadmap">Continue AI/ML →</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Mentor & Deadlines -->
+            <div class="col-side">
+              <!-- AI Mentor Recommendation Widget -->
+              <div class="mentor-widget-card">
+                <div class="mentor-avatar-badge">🧙‍♂️</div>
+                <div class="mentor-widget-body">
+                  <h4>GENZAI Recommendation</h4>
+                  <p id="dash-mentor-tip">"You've shown high consistency in Python! Next, complete 3 Graph & DP problems before your upcoming campus placement evaluation."</p>
+                  <button class="btn btn-sm btn-primary nav-trigger" data-tab="ai-mentor">View Full Audit</button>
+                </div>
+              </div>
+
+              <!-- Deadlines & Upcoming Exams -->
+              <div class="content-card">
+                <div class="card-header">
+                  <h3>📅 Upcoming Deadlines</h3>
+                </div>
+                <div class="deadlines-list" id="dash-deadlines-container">
+                  <!-- Deadlines populated dynamically -->
+                </div>
+              </div>
+
+              <!-- Daily Productivity Gauge -->
+              <div class="content-card">
+                <div class="card-header">
+                  <h3>⏱️ Today's Productivity</h3>
+                </div>
+                <div class="productivity-ring-box">
+                  <div class="ring-circle">
+                    <span class="ring-val">2.5 / 4h</span>
+                    <span class="ring-lbl">Completed</span>
+                  </div>
+                  <div class="prod-legend">
+                    <div><span class="dot dsa"></span> DSA: 1.5h</div>
+                    <div><span class="dot aiml"></span> AI/ML: 1.0h</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Final Dashboard CTA -->
+          <div class="final-dash-cta-card">
+            <h2>Your next breakthrough starts here.</h2>
+            <p>Stop guessing what to learn next. Let GENZAI guide the journey.</p>
+            <div class="fd-actions">
+              <button class="btn btn-primary nav-trigger" data-tab="study-planner">🚀 Continue Learning</button>
+              <button class="btn btn-secondary nav-trigger" data-tab="ai-tutor">🤖 Ask GENZAI</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 2: VISUAL SKILL GRAPH / SKILL TREE -->
+        <section class="view-panel" id="view-skill-graph">
+          <div class="panel-header">
+            <div>
+              <h2>🌳 Visual Skill Tree & Career Journey</h2>
+              <p>Interactive roadmap of your engineering capabilities. Unlocked nodes glow bright green/cyan.</p>
+            </div>
+            <div class="track-switcher">
+              <button class="switch-btn active" id="skill-track-swe">Software Engineering & DSA</button>
+              <button class="switch-btn" id="skill-track-aiml">AI/ML & Data Science</button>
+            </div>
+          </div>
+
+          <div class="skill-tree-container">
+            <div class="skill-canvas-wrapper" id="skill-canvas-container">
+              <svg id="skill-tree-svg" class="skill-svg"></svg>
+            </div>
+
+            <!-- Skill Detail Sidebar Drawer -->
+            <div class="skill-detail-panel" id="skill-detail-panel">
+              <div class="skill-detail-header">
+                <span class="skill-icon-lg" id="sd-icon">🐍</span>
+                <div>
+                  <h3 id="sd-title">Python Basics</h3>
+                  <span class="status-badge unlocked" id="sd-status">Unlocked</span>
+                </div>
+              </div>
+              <p class="skill-desc" id="sd-desc">Master Python fundamentals, variables, loops, data structures, and OOP principles.</p>
+              
+              <div class="skill-meta-box">
+                <div class="sm-item">
+                  <span class="sm-lbl">Prerequisites</span>
+                  <span class="sm-val" id="sd-prereqs">None</span>
+                </div>
+                <div class="sm-item">
+                  <span class="sm-lbl">Unlocks</span>
+                  <span class="sm-val" id="sd-unlocks">DSA Basics, NumPy</span>
+                </div>
+              </div>
+
+              <h4>Key Topics Covered</h4>
+              <ul class="skill-topics-list" id="sd-topics">
+                <!-- Topics populated dynamically -->
+              </ul>
+
+              <div class="sd-actions">
+                <button class="btn btn-primary btn-block" id="sd-practice-btn">🚀 Practice This Skill</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 3: AI PERSONALIZED STUDY PLANNER -->
+        <section class="view-panel" id="view-study-planner">
+          <div class="panel-header">
+            <div>
+              <h2>📅 AI Personalized Study Planner</h2>
+              <p>GENZAI built today's plan for you based on exam dates and available hours.</p>
+            </div>
+            <button class="btn btn-primary" id="open-planner-config-btn">⚙️ Configure Study Profile</button>
+          </div>
+
+          <div class="planner-layout">
+            <!-- Left: Weekly Schedule Timeline -->
+            <div class="planner-main">
+              <div class="planner-controls">
+                <div class="day-tabs" id="planner-day-tabs">
+                  <button class="day-tab active" data-day="Mon">Mon</button>
+                  <button class="day-tab" data-day="Tue">Tue</button>
+                  <button class="day-tab" data-day="Wed">Wed</button>
+                  <button class="day-tab" data-day="Thu">Thu</button>
+                  <button class="day-tab" data-day="Fri">Fri</button>
+                  <button class="day-tab" data-day="Sat">Sat</button>
+                  <button class="day-tab" data-day="Sun">Sun</button>
+                </div>
+                <button class="btn btn-sm btn-outline" id="trigger-auto-reschedule">🤖 Optimize My Day</button>
+              </div>
+
+              <div class="schedule-timeline" id="schedule-timeline-container">
+                <!-- Daily Schedule blocks populated dynamically -->
+              </div>
+            </div>
+
+            <!-- Right: Weak/Strong Topics & Exam Countdown -->
+            <div class="planner-sidebar">
+              <div class="content-card">
+                <h3>🧠 Subject Balance Analysis</h3>
+                <div class="subject-tags-box" id="planner-subject-tags">
+                  <!-- Subject tags -->
+                </div>
+              </div>
+
+              <div class="content-card">
+                <h3>⏳ Exam Countdown</h3>
+                <div class="exam-list" id="planner-exam-list">
+                  <!-- Exam cards -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW: SMART NOTES & STUDY WORKSPACE -->
+        <section class="view-panel" id="view-notes">
+          <div class="panel-header">
+            <div>
+              <h2>📝 Smart Notes & Coursework Hub</h2>
+              <p>Organize subject notes, AI-summarize long lectures into flashcards, and revise key formulas.</p>
+            </div>
+            <button class="btn btn-primary" id="create-note-btn">➕ Create New Note</button>
+          </div>
+
+          <div class="notes-layout">
+            <div class="notes-sidebar-card">
+              <div class="notes-filter-box">
+                <input type="text" id="notes-search-input" placeholder="Search notes by subject or topic..." />
+              </div>
+              <div class="notes-list" id="notes-list-container">
+                <!-- Notes list -->
+              </div>
+            </div>
+
+            <div class="note-editor-card">
+              <div class="ne-header">
+                <input type="text" id="note-title-input" class="note-title-field" placeholder="Note Title (e.g. Operating Systems: Process Scheduling)" />
+                <div class="ne-actions">
+                  <span class="badge-tag" id="note-subject-tag">Operating Systems</span>
+                  <button class="btn btn-sm btn-secondary" id="note-save-btn">💾 Save Note</button>
+                  <button class="btn btn-sm btn-primary" id="note-ai-summarize-btn">🤖 AI Summarize & Flashcards</button>
+                </div>
+              </div>
+
+              <textarea id="note-content-area" class="note-content-area" placeholder="Type or paste your lecture notes here..."></textarea>
+
+              <div class="ai-notes-summary-box hidden" id="ai-note-summary-box">
+                <h4>🧙‍♂️ AI Summary & Key Formulas</h4>
+                <div id="ai-note-summary-content">
+                  <!-- AI Summary -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 4: DSA PREPARATION HUB -->
+        <section class="view-panel" id="view-dsa-hub">
+          <div class="panel-header">
+            <div>
+              <h2>🧩 Your DSA Interview Readiness</h2>
+              <p>Overall Readiness: <strong>32% Solved</strong> • Filter topics and practice with scaffolded AI hints.</p>
+            </div>
+            <div class="dsa-filter-group">
+              <select id="dsa-topic-filter" class="custom-select">
+                <option value="all">All DSA Topics</option>
+                <option value="Arrays">Arrays & Hashing (80%)</option>
+                <option value="Strings">Strings (70%)</option>
+                <option value="Trees">Trees & BST (40%)</option>
+                <option value="Graphs">Graphs (20%)</option>
+                <option value="Dynamic Programming">Dynamic Programming (10%)</option>
+              </select>
+              <select id="dsa-diff-filter" class="custom-select">
+                <option value="all">All Difficulties</option>
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="dsa-topics-bar" id="dsa-topics-bar">
+            <!-- Topic progress cards -->
+          </div>
+
+          <div class="content-card">
+            <div class="problems-table-wrapper">
+              <table class="problems-table">
+                <thead>
+                  <tr>
+                    <th>Status</th>
+                    <th>Problem Name</th>
+                    <th>Topic</th>
+                    <th>Difficulty</th>
+                    <th>Complexity</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="dsa-problems-body">
+                  <!-- Problem Rows -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 5: AI/ML LEARNING ROADMAP -->
+        <section class="view-panel" id="view-aiml-roadmap">
+          <div class="panel-header">
+            <div>
+              <h2>🤖 AI/ML Track</h2>
+              <p>From Python fundamentals to Generative AI & LLM Engineering.</p>
+            </div>
+            <div class="aiml-status-banner">
+              <span>Your AI Status: <strong>Intermediate ML Learner (65%)</strong></span>
+              <span class="badge-tag">Recommended Next: Neural Networks & PyTorch</span>
+            </div>
+          </div>
+
+          <div class="aiml-grid" id="aiml-roadmap-grid">
+            <!-- AI/ML Roadmap Step Cards -->
+          </div>
+        </section>
+
+        <!-- VIEW 6: CODING PRACTICE & IN-BROWSER CODE RUNNER -->
+        <section class="view-panel" id="view-coding-practice">
+          <div class="panel-header">
+            <div>
+              <h2>💻 Code Sandbox & GENZAI Debugger</h2>
+              <p>GENZAI Code Intelligence: Practice problem solving with automated test cases and instant error analysis.</p>
+            </div>
+            <div class="code-controls">
+              <select id="code-lang-select" class="custom-select">
+                <option value="python">Python 3</option>
+                <option value="javascript">JavaScript (ES6)</option>
+                <option value="cpp">C++ 20</option>
+                <option value="java">Java 17</option>
+              </select>
+              <button class="btn btn-secondary" id="code-ai-hint-btn">💡 Ask AI Hint</button>
+              <button class="btn btn-primary" id="code-run-btn">▶️ Run Code</button>
+            </div>
+          </div>
+
+          <div class="sandbox-layout">
+            <div class="sandbox-problem">
+              <div class="prob-header">
+                <span class="prob-tag" id="sandbox-prob-diff">Easy</span>
+                <h3 id="sandbox-prob-title">Two Sum Problem</h3>
+              </div>
+              <div class="prob-body" id="sandbox-prob-desc">
+                <p>Given an array of integers <code>nums</code> and an integer <code>target</code>, return indices of the two numbers such that they add up to <code>target</code>.</p>
+              </div>
+              <div class="ai-hint-drawer hidden" id="sandbox-ai-hint-box">
+                <h4>🧙‍♂️ GENZAI Scaffolded Hint</h4>
+                <p id="sandbox-hint-text">Try using a Hash Map to store numbers you've already seen and check if target - current_num exists in O(1) time!</p>
+              </div>
+            </div>
+
+            <div class="sandbox-editor-wrapper">
+              <div class="editor-header">
+                <span class="file-name">solution.py</span>
+                <span class="complexity-pill" id="code-complexity-tag">Time: O(N) | Space: O(N)</span>
+              </div>
+              <textarea id="code-editor-input" class="code-editor-area" spellcheck="false"></textarea>
+
+              <div class="console-terminal" id="console-terminal">
+                <div class="term-header">
+                  <span>Terminal Log & GENZAI Debugger</span>
+                  <button class="term-clear-btn" id="clear-term-btn">Clear</button>
+                </div>
+                <pre class="term-body" id="term-output-text">Press "Run Code" to execute test cases...</pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 7: AI STUDY TUTOR -->
+        <section class="view-panel" id="view-ai-tutor">
+          <div class="tutor-container">
+            <div class="tutor-sidebar">
+              <div class="tutor-avatar-box">
+                <div class="tutor-avatar">💡</div>
+                <h3>Ask GENZAI Anything</h3>
+                <p>Your personal AI tutor for DSA, AI/ML, engineering subjects, and coding interviews.</p>
+              </div>
+
+              <div class="quick-prompts-title">QUICK PROMPTS</div>
+              <div class="quick-prompts-list">
+                <button class="qp-btn" data-prompt="Explain Dynamic Programming simple with a real-world analogy.">💡 Explain DP Simply</button>
+                <button class="qp-btn" data-prompt="Teach me Gradient Descent in Machine Learning step by step.">🤖 Teach me Gradient Descent</button>
+                <button class="qp-btn" data-prompt="What is the key difference between BFS and DFS in Graphs?">🧩 BFS vs DFS</button>
+                <button class="qp-btn" data-prompt="How do I prepare for technical coding interviews under pressure?">💼 Coding Interview Prep</button>
+              </div>
+            </div>
+
+            <div class="tutor-chat-main">
+              <div class="chat-messages" id="tutor-messages-container">
+                <div class="chat-msg bot">
+                  <div class="msg-avatar">🤖</div>
+                  <div class="msg-content">
+                    <p>Hello Alex! I am <strong>GENZAI</strong>, your AI Student Tutor. Ask me anything about DSA, ML, code bugs, or interview prep!</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="chat-input-box">
+                <textarea id="tutor-input-text" placeholder="Type your doubt or question here..." rows="1"></textarea>
+                <button class="btn btn-primary" id="tutor-send-btn">Send 🚀</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 8: JOB PREPARATION -->
+        <section class="view-panel" id="view-job-prep">
+          <div class="panel-header">
+            <div>
+              <h2>From Learning to Getting Hired</h2>
+              <p>Job Readiness Score: <strong style="color:var(--accent-emerald);">74%</strong> • Evaluated based on demo profile data.</p>
+            </div>
+          </div>
+
+          <div class="job-prep-tabs">
+            <button class="jtab-btn active" data-jtab="skill-gap">SKILL GAP ("What are you missing?")</button>
+            <button class="jtab-btn" data-jtab="resume-ats">RESUME AUDIT ("Is your resume ready?")</button>
+            <button class="jtab-btn" data-jtab="mock-interview">MOCK INTERVIEW ("Can you answer under pressure?")</button>
+          </div>
+
+          <!-- Tab 1: Skill Gap -->
+          <div class="jtab-content active" id="jtab-skill-gap">
+            <div class="skill-gap-box">
+              <div class="sg-header">
+                <div>
+                  <h3>Target Role: <span id="sg-role-title">AI/ML Engineer</span></h3>
+                  <p>Comparing your skills against industry job descriptions</p>
+                </div>
+                <div class="sg-score-circle">
+                  <span class="sg-score">74%</span>
+                  <span class="sg-label">Match Score</span>
+                </div>
+              </div>
+
+              <div class="sg-columns">
+                <div class="sg-col">
+                  <h4>✅ Mastered Strengths</h4>
+                  <ul class="sg-list mastered" id="sg-mastered-list"></ul>
+                </div>
+                <div class="sg-col">
+                  <h4>⚠️ Critical Skill Gaps</h4>
+                  <ul class="sg-list gap" id="sg-gap-list"></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 2: Resume Audit -->
+          <div class="jtab-content" id="jtab-resume-ats">
+            <div class="content-card">
+              <h3>📄 ATS Resume & Portfolio Audit</h3>
+              <div class="ats-checklist" id="ats-checklist-container"></div>
+            </div>
+          </div>
+
+          <!-- Tab 3: Mock Interview -->
+          <div class="jtab-content" id="jtab-mock-interview">
+            <div class="content-card">
+              <h3>🎙️ Mock Technical & HR Interview Practice</h3>
+              <div class="interview-box" id="interview-simulator-box"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 9: CAREER ROADMAPS -->
+        <section class="view-panel" id="view-career-roadmaps">
+          <div class="panel-header">
+            <div>
+              <h2>🚀 Technical Career Roadmaps</h2>
+              <p>Step-by-step career path guides for high-demand engineering roles.</p>
+            </div>
+          </div>
+
+          <div class="role-selector-bar" id="role-selector-bar"></div>
+          <div class="roadmap-timeline-wrapper" id="career-roadmap-detail"></div>
+        </section>
+
+        <!-- VIEW 10: PROJECT GENERATOR -->
+        <section class="view-panel" id="view-project-generator">
+          <div class="panel-header">
+            <div>
+              <h2>✨ Turn Your Skills Into Projects</h2>
+              <p>GENZAI generates resume-worthy project blueprints tailored to your career target and skill level.</p>
+            </div>
+          </div>
+
+          <div class="proj-gen-controls">
+            <div class="form-group-inline">
+              <label>Domain:</label>
+              <select id="proj-domain-select" class="custom-select">
+                <option value="aiml">AI & Machine Learning</option>
+                <option value="webdev">Full Stack Web Development</option>
+                <option value="data">Data Science & Analytics</option>
+                <option value="cyber">Cybersecurity</option>
+              </select>
+            </div>
+
+            <div class="form-group-inline">
+              <label>Skill Level:</label>
+              <select id="proj-level-select" class="custom-select">
+                <option value="Intermediate">Intermediate</option>
+                <option value="Beginner">Beginner</option>
+                <option value="Advanced">Advanced</option>
+              </select>
+            </div>
+
+            <button class="btn btn-primary" id="generate-proj-btn">✨ Generate My Project</button>
+          </div>
+
+          <div class="project-card-full" id="generated-project-card"></div>
+        </section>
+
+        <!-- VIEW 11: KNOWLEDGE HUB -->
+        <section class="view-panel" id="view-knowledge-hub">
+          <div class="panel-header">
+            <div>
+              <h2>📚 Knowledge & Resource Hub</h2>
+              <p>Searchable encyclopedia of DSA patterns, AI formulas, cheat sheets, and technical definitions.</p>
+            </div>
+            <div class="khub-filters" id="khub-category-filters">
+              <button class="khub-btn active" data-cat="all">All</button>
+              <button class="khub-btn" data-cat="dsa">DSA Cheat Sheets</button>
+              <button class="khub-btn" data-cat="aiml">AI/ML Formulas</button>
+              <button class="khub-btn" data-cat="interview">Interview Concepts</button>
+            </div>
+          </div>
+
+          <div class="khub-grid" id="khub-articles-grid"></div>
+        </section>
+
+        <!-- VIEW 12: GAMIFICATION -->
+        <section class="view-panel" id="view-gamification">
+          <div class="panel-header">
+            <div>
+              <h2>🏆 Streaks & Engineer XP</h2>
+              <p>Track your daily coding streak, earn achievements, and view your developer growth stats.</p>
+            </div>
+          </div>
+
+          <div class="gamify-header-card">
+            <div class="level-big-badge">
+              <div class="level-num">06</div>
+              <div class="level-lbl">Lvl 6 Engineer</div>
+            </div>
+            <div class="xp-progress-large">
+              <div class="xp-info">
+                <span>Engineer XP: <strong>3,450 XP</strong></span>
+                <span>Next Rank: 4,000 XP</span>
+              </div>
+              <div class="progress-bar-lg"><div class="progress-fill-lg" style="width: 70%;"></div></div>
+            </div>
+          </div>
+
+          <div class="content-card">
+            <h3>🎖️ Developer Achievements</h3>
+            <div class="badges-grid" id="badges-container"></div>
+          </div>
+        </section>
+
+        <!-- VIEW 13: AI CAREER MENTOR -->
+        <section class="view-panel" id="view-ai-mentor">
+          <div class="panel-header">
+            <div>
+              <h2>🧙‍♂️ AI Career Mentor & Audit Engine</h2>
+              <p>Diagnostic analysis of your study consistency, coding activity, and career readiness.</p>
+            </div>
+            <button class="btn btn-primary" id="run-ai-audit-btn">⚡ Run AI Career Audit</button>
+          </div>
+
+          <div class="mentor-audit-card" id="mentor-audit-display"></div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- PERSONALIZED ONBOARDING MODAL: "Tell GENZAI where you want to go" -->
+  <div class="modal-overlay hidden" id="onboarding-modal">
+    <div class="modal-box onboarding-box">
+      <div class="modal-header">
+        <div>
+          <h3>🤖 Tell GENZAI where you want to go</h3>
+          <p class="subtitle">Build your custom AI-generated career roadmap</p>
+        </div>
+        <button class="modal-close-btn" id="close-onboarding-modal">✕</button>
+      </div>
+
+      <div class="onboarding-body" id="onboarding-body-step1">
+        <h4>Step 1: What do you want to become?</h4>
+        <div class="role-cards-grid">
+          <div class="role-card-opt selected" data-role="AI/ML Engineer">
+            <span class="r-icon">🤖</span>
+            <div class="r-title">AI/ML Engineer</div>
+            <div class="r-sub">PyTorch, ML, GenAI, LLMs</div>
+          </div>
+          <div class="role-card-opt" data-role="Software Engineer">
+            <span class="r-icon">💻</span>
+            <div class="r-title">Software Engineer</div>
+            <div class="r-sub">DSA, OOP, System Design</div>
+          </div>
+          <div class="role-card-opt" data-role="Full Stack Developer">
+            <span class="r-icon">🌐</span>
+            <div class="r-title">Full Stack Developer</div>
+            <div class="r-sub">React, Node.js, DBs, Cloud</div>
+          </div>
+          <div class="role-card-opt" data-role="Data Scientist">
+            <span class="r-icon">📊</span>
+            <div class="r-title">Data Scientist</div>
+            <div class="r-sub">Python, Stats, ML, Viz</div>
+          </div>
+        </div>
+
+        <div class="onboarding-row-2 margin-top-20">
+          <div>
+            <h4>Step 2: What's your current level?</h4>
+            <select id="ob-level-select" class="custom-select full-width">
+              <option value="Beginner">Beginner (Starting fresh)</option>
+              <option value="Intermediate" selected>Intermediate (Know fundamentals)</option>
+              <option value="Advanced">Advanced (Preparing for hiring)</option>
+            </select>
+          </div>
+          <div>
+            <h4>Step 3: Daily available time?</h4>
+            <select id="ob-hours-select" class="custom-select full-width">
+              <option value="1">1 Hour / day</option>
+              <option value="2">2 Hours / day</option>
+              <option value="4" selected>4 Hours / day</option>
+              <option value="6">6+ Hours / day</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal-actions margin-top-20">
+          <button class="btn btn-primary btn-block" id="generate-onboarding-roadmap-btn">🚀 Generate My AI Roadmap</button>
+        </div>
+      </div>
+
+      <!-- Onboarding Result View -->
+      <div class="onboarding-body hidden" id="onboarding-body-result">
+        <div class="ob-result-header">
+          <h4>🚀 YOUR AI-GENERATED ROADMAP</h4>
+          <span class="badge-tag" id="ob-result-role-tag">AI/ML Engineer</span>
+        </div>
+        <div class="ob-roadmap-preview" id="ob-roadmap-preview-container">
+          <!-- Populated dynamically -->
+        </div>
+        <div class="modal-actions margin-top-20">
+          <button class="btn btn-primary btn-block" id="save-onboarding-roadmap-btn">🚀 Start My Roadmap</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 60-SECOND HACKATHON DEMO MODAL (FOR JUDGES) -->
+  <div class="modal-overlay hidden" id="demo-modal">
+    <div class="modal-box demo-box">
+      <div class="modal-header">
+        <div>
+          <h3>🎬 GENZAI Coder — 60-sec Hackathon Tour</h3>
+          <p class="subtitle">Interactive product story for hackathon judges</p>
+        </div>
+        <button class="modal-close-btn" id="close-demo-modal">✕</button>
+      </div>
+
+      <div class="demo-modal-body">
+        <div class="demo-step-indicator" id="demo-step-indicator">Step 1 of 6: Target Goal & Skill Audit</div>
+
+        <div class="demo-slide-card" id="demo-slide-content">
+          <!-- Demo slide rendered dynamically -->
+        </div>
+
+        <div class="demo-controls-row">
+          <button class="btn btn-secondary" id="demo-prev-btn" disabled>← Previous</button>
+          <button class="btn btn-primary" id="demo-next-btn">Next Step →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/aiEngine.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
